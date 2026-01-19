@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Polls</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Optional basic styling -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f6f8;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin: 10px 0;
+        }
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: 500;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        p {
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Available Polls</h1>
+
+    {% if latest_question_list %}
+        <ul>
+            {% for question in latest_question_list %}
+                <li>
+                    <a href="/polls/{{ question.id }}/">
+                        {{ question.question_text }}
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No polls are available.</p>
+    {% endif %}
+
+</body>
+</html>
